@@ -1,0 +1,44 @@
+.section {
+  padding-top: 70px;
+  padding-bottom: 210px;
+  background-image: url("./back-wave-bottom.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 145px;
+}
+
+.logo {
+  width: 300px;
+  margin-bottom: 110px;
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    margin-bottom: 75px;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 208px;
+  margin: 0 auto;
+}
+
+.button:first-child {
+  margin-bottom: 20px;
+}
+
+.button {
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #bfb1d7;
+  color: #390093;
+  font-weight: 700;
+}
+
+.motivation {
+  width: 303px;
+  text-align: center;
+  margin-bottom: 125px;
+  color: #390e84;
+}

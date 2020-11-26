@@ -12,7 +12,7 @@ class Profile extends Component {
 
   handleOnChange = (e) => {
     const name = e.target.name;
-    this.setState({ [name]: name.value });
+    this.setState({ [name]: e.target.value });
   };
 
   handleOnSubmit = (e) => {
@@ -33,12 +33,12 @@ class Profile extends Component {
         <form className={styles.form} onSubmit={this.handleOnSubmit}>
           <label>
             Сменить фото
-            <input type="text" value={this.state.avatar} name="avatar" onChange={this.handleOnChange} />
+            <input type="file" value={this.state.avatar} name="avatar" onChange={this.handleOnChange} />
           </label>
           <label>
             Рост
             <input
-              type="text"
+              type="number"
               value={this.state.height}
               name="height"
               onChange={this.handleOnChange}
@@ -48,7 +48,7 @@ class Profile extends Component {
           <label>
             Вес
             <input
-              type="text"
+              type="number"
               value={this.state.weight}
               name="weight"
               onChange={this.handleOnChange}
@@ -58,7 +58,7 @@ class Profile extends Component {
           <label>
             Дата рождения
             <input
-              type="text"
+              type="date"
               value={this.state.birthDate}
               name="birthDate"
               onChange={this.handleOnChange}

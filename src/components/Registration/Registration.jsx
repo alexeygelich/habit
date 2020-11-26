@@ -1,30 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styles from './Registration.module.css';
+import styles from "./Registration.module.css";
 
-const Registration = (props) => (
-  <>
-    <div className={styles.header}>
-    <button type="button">Назад</button>
-    </div>
-    <form className={styles.form} action="submit">
-      <label htmlFor="userName"></label>
-      <input type="text" name="userName" placeholder="Имя"/>
-      <label htmlFor="userSurname"></label>
-      <input type="text" name="userSurname" placeholder="Фамилия"/>
-      <label htmlFor="userPhone"></label>
-      <input type="text" name="userPhone" placeholder="+380..."/>
-      <input type="submit" name="userPhone" />
-    </form>
-  </>
-);
+export default class Registration extends Component {
+  static propTypes = {
+    prop: PropTypes,
+  };
 
-Registration.propTypes = {
-  // bla: PropTypes.string,
-};
+  state = {
+    name: "",
+    surname: "",
+    tel: "",
+  };
 
-Registration.defaultProps = {
-  // bla: 'test',
-};
+  handleChange = ({ target }) => {
+    this.setState({
+      [target.name]: target.value,
+    });
+  };
 
-export default Registration;
+  handleSubmit = (e) => {
+    e.preventDefault();
+    alert(JSON.stringify(this.state, null, 2));
+  };
+
+  render() {
+    const { name, surname, tel } = this.state;
+    return (
+      <>
+        <div className={styles.header}>
+          <button type="button">Назад</button>
+        </div>
+        <form className={styles.form} action="submit" onSubmit={this.handleSubmit}>
+          <label htmlFor="name" value={name}></label>
+          <input type="text" name="name" placeholder="Имя" onChange={this.handleChange} />
+          <label htmlFor="surname" value={surname}></label>
+          <input type="text" name="surname" placeholder="Фамилия" onChange={this.handleChange} />
+          <label htmlFor="tel" value={tel}></label>
+          <input type="text" name="tel" placeholder="+380..." onChange={this.handleChange} />
+          <input type="submit" name="userPhone" />
+        </form>
+      </>
+    );
+  }
+}

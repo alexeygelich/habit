@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Authentification.module.css";
+import Container from "../shared/Container";
 // import Loganization from '../Logatization'
 // import Registration from '../Registration'
 
@@ -12,6 +13,7 @@ class Authentification extends Component {
   };
 
   onBtnClick = (e) => {
+    console.log(window.innerWidth);
     if (e.target.textContent === "Вход") {
       console.log("логин");
       // <Loganization/>
@@ -23,16 +25,27 @@ class Authentification extends Component {
 
   render() {
     return (
-      <>
-        <section>
-          <button className={styles.button} type="button" onClick={this.onBtnClick}>
-            Вход
-          </button>
-          <button className={styles.button} type="button" onClick={this.onBtnClick}>
-            Создать аккаунт
-          </button>
-        </section>
-      </>
+      <section className={styles.section}>
+        <Container>
+          <img className={styles.logo} src="./logo.png" alt="logo" />
+          {window.innerWidth > 767 ? (
+            <p className={styles.motivation}>
+              Мотивируй себя <br />
+              на достижение ваших целей.
+            </p>
+          ) : (
+            ""
+          )}
+          <div className={styles.buttonsWrapper}>
+            <button className={styles.button} type="button" onClick={this.onBtnClick}>
+              Вход
+            </button>
+            <button className={styles.button} type="button" onClick={this.onBtnClick}>
+              Создать аккаунт
+            </button>
+          </div>
+        </Container>
+      </section>
     );
   }
 }
