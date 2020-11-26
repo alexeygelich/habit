@@ -4,6 +4,7 @@ import styles from "./Authentification.module.css";
 import Container from "../shared/Container";
 // import Loganization from '../Logatization'
 // import Registration from '../Registration'
+import logo from "../../images/desktop/logo.png";
 
 class Authentification extends Component {
   state = {
@@ -27,7 +28,7 @@ class Authentification extends Component {
     return (
       <section className={styles.section}>
         <Container>
-          <img className={styles.logo} src="./logo.png" alt="logo" />
+          <img className={styles.logo} src={logo} alt="logo" />
           {window.innerWidth > 767 ? (
             <p className={styles.motivation}>
               Мотивируй себя <br />

@@ -1,7 +1,8 @@
 .section {
+  display: flex;
   padding-top: 70px;
   padding-bottom: 210px;
-  background-image: url("./back-wave-bottom.png");
+  background-image: url("../../images/mobile/back-wave-bottom.png");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100% 145px;
@@ -10,11 +11,6 @@
 .logo {
   width: 300px;
   margin-bottom: 110px;
-}
-@media screen and (min-width: 768px) {
-  .logo {
-    margin-bottom: 75px;
-  }
 }
 
 .buttonsWrapper {
@@ -36,9 +32,68 @@
   font-weight: 700;
 }
 
-.motivation {
-  width: 303px;
-  text-align: center;
-  margin-bottom: 125px;
-  color: #390e84;
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 100px;
+    padding-bottom: 335px;
+    background-image: url("../../images/tablet/back-widewave-bottom.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 345px;
+  }
+
+  .logo {
+    margin-bottom: 100px;
+    width: 650px;
+  }
+
+  .motivation {
+    width: 360px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+    text-align: center;
+    margin-bottom: 125px;
+    color: #390e84;
+    font-size: 27px;
+  }
+
+  .buttonsWrapper {
+    width: 365px;
+  }
+
+  .button {
+    height: 65px;
+    font-size: 26px;
+  }
+
+  .button:first-child {
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .logo {
+    margin-bottom: 130px;
+    margin-left: 200px;
+    width: 700px;
+  }
+
+  .motivation {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+    text-align: center;
+    margin-bottom: 125px;
+    color: #390e84;
+    font-size: 30px;
+  }
+
+  .section {
+    padding-top: 50px;
+    padding-bottom: 120px;
+    background-image: url("../../images/desktop/bottomwaves-desk.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+  }
 }
