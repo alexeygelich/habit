@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 // import styles from "./HabitForm.module.css";
 
 export default class HabitForm extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  };
 
   state = {
     title: "",
@@ -23,7 +21,25 @@ export default class HabitForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(this.state, null, 2));
+    const { title, comment, repeat, color, remind } = this.state;
+    const habit = {
+      id: uuidv4(),
+      title: title,
+      startDate: Date.now(),
+      progress: this.toSetProgress(Date.now()),
+      comment: comment,
+      repeat: repeat,
+      color: color,
+      remind: remind,
+    };
+    this.props.toAddHabit(habit);
+    this.props.toggleModal();
+  };
+
+  toSetProgress = (startDate) => {
+    const dateNow = Date.now();
+    const progress = Math.round(((dateNow - startDate) * 100) / (21 * 24 * 60 * 60 * 1000));
+    return progress;
   };
 
   render() {
@@ -32,7 +48,9 @@ export default class HabitForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div style={{ backgroundColor: this.state.color }}>
-            <button type="button">X</button>
+            <button type="button" onClick={this.props.toggleModal}>
+              X
+            </button>
             <h2>Новая привычка</h2>
             <label>
               <input type="text" name="title" value={title} onChange={this.handleChange} />
