@@ -26,27 +26,30 @@ class Authentification extends Component {
 
   render() {
     return (
-      <section className={styles.section}>
-        <Container>
-          <img className={styles.logo} src={logo} alt="logo" />
-          {window.innerWidth > 767 ? (
-            <p className={styles.motivation}>
-              Мотивируй себя <br />
-              на достижение ваших целей.
-            </p>
-          ) : (
-            ""
-          )}
-          <div className={styles.buttonsWrapper}>
-            <button className={styles.button} type="button" onClick={this.onBtnClick}>
-              Вход
-            </button>
-            <button className={styles.button} type="button" onClick={this.onBtnClick}>
-              Создать аккаунт
-            </button>
-          </div>
-        </Container>
-      </section>
+      <>
+        <section className={styles.section}>
+          <Container>
+            <img className={styles.logo} src={logo} alt="logo" />
+            {window.innerWidth > 767 ? (
+              <p className={styles.motivation}>
+                Мотивируй себя <br />
+                на достижение ваших целей.
+              </p>
+            ) : (
+              ""
+            )}
+            <div className={styles.buttonsWrapper}>
+              <button className={styles.button} type="button" onClick={this.onBtnClick}>
+                Вход
+              </button>
+              <button className={styles.button} type="button" onClick={this.onBtnClick}>
+                Создать аккаунт
+              </button>
+            </div>
+          </Container>
+        </section>
+        <footer className={styles.footer}></footer>
+      </>
     );
   }
 }

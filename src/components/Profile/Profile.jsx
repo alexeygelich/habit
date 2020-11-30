@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Profile.module.css";
 
+import imgPerson from "../../images/logoPerson.png";
+
 class Profile extends Component {
   state = {
     avatar: "",
@@ -29,15 +31,25 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <button type="button">Назад</button>
+        <button className={styles.btnBack} type="button">
+          Назад
+        </button>
         <form className={styles.form} onSubmit={this.handleOnSubmit}>
-          <label>
+          <label className={styles.label}>
+            <img className={styles.labelPhoto} src={imgPerson} alt="" width="100" height="100" />
             Сменить фото
-            <input type="file" value={this.state.avatar} name="avatar" onChange={this.handleOnChange} />
+            <input
+              className={styles.inputText}
+              type="file"
+              value={this.state.avatar}
+              name="avatar"
+              onChange={this.handleOnChange}
+            />
           </label>
-          <label>
+          <label className={styles.label}>
             Рост
             <input
+              className={styles.inputText}
               type="number"
               value={this.state.height}
               name="height"
@@ -45,9 +57,10 @@ class Profile extends Component {
               placeholder="170 см"
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Вес
             <input
+              className={styles.inputText}
               type="number"
               value={this.state.weight}
               name="weight"
@@ -55,9 +68,10 @@ class Profile extends Component {
               placeholder="70 кг"
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Дата рождения
             <input
+              className={styles.inputText}
               type="date"
               value={this.state.birthDate}
               name="birthDate"
@@ -65,8 +79,11 @@ class Profile extends Component {
               placeholder="01.01.1990"
             />
           </label>
-          <input type="submit" value="Создать" />
+          <button className={styles.button} type="submit">
+            Создать
+          </button>
         </form>
+        <footer className={styles.footer}></footer>
       </>
     );
   }

@@ -2,10 +2,6 @@
   display: flex;
   padding-top: 70px;
   padding-bottom: 210px;
-  background-image: url("../../images/mobile/back-wave-bottom.png");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 145px;
 }
 
 .logo {
@@ -36,10 +32,6 @@
   .section {
     padding-top: 100px;
     padding-bottom: 335px;
-    background-image: url("../../images/tablet/back-widewave-bottom.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 100% 345px;
   }
 
   .logo {
@@ -91,6 +83,29 @@
   .section {
     padding-top: 50px;
     padding-bottom: 120px;
+  }
+}
+
+.footer {
+  height: 145px;
+  background-image: url("../../images/mobile/back-wave-bottom.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 145px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    height: 345px;
+    background-image: url("../../images/tablet/back-widewave-bottom.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 345px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
     background-image: url("../../images/desktop/bottomwaves-desk.png");
     background-repeat: no-repeat;
     background-position: bottom;

@@ -10,6 +10,7 @@ import HabitList from "./components/HabitsList";
 
 class App extends Component {
   state = {
+    isProfile: false,
     showModal: false,
   };
 
@@ -23,13 +24,12 @@ class App extends Component {
     const { showModal } = this.state;
     return (
       <>
-
         {/* <Authentification /> */}
-        {/* <Profile /> */}
+        <Profile />
         {/* <Registration /> */}
         {/* <Loganization/> */}
         {/* <HabitForm /> */}
-        <HabitList showModal={showModal} toggleModal={this.toggleModal} />
+        {/* <HabitList showModal={showModal} toggleModal={this.toggleModal} /> */}
       </>
     );
   }
