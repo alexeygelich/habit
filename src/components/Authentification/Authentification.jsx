@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Authentification.module.css";
 import Container from "../shared/Container";
+import { NavLink } from "react-router-dom";
 // import Loganization from '../Logatization'
 // import Registration from '../Registration'
 import logo from "../../images/desktop/logo.png";
@@ -39,12 +40,12 @@ class Authentification extends Component {
               ""
             )}
             <div className={styles.buttonsWrapper}>
-              <button className={styles.button} type="button" onClick={this.onBtnClick}>
+              <NavLink to="/login" className={styles.link} onClick={this.onBtnClick}>
                 Вход
-              </button>
-              <button className={styles.button} type="button" onClick={this.onBtnClick}>
+              </NavLink>
+              <NavLink to="/registr" className={styles.link} onClick={this.onBtnClick}>
                 Создать аккаунт
-              </button>
+              </NavLink>
             </div>
           </Container>
         </section>

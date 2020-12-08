@@ -4,7 +4,7 @@ import styles from "./Modal.module.css";
 export default class Modal extends Component {
   onCloseModal = (e) => {
     if (e.code === "Escape") {
-      this.props.toggleModal();
+      this.props.modalToggle();
     }
   };
 

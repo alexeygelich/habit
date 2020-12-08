@@ -1,35 +1,50 @@
-import React, { Component } from "react";
-import Authentification from "./components/Authentification";
+import React, { Component, Suspense } from "react";
+import { Route } from "react-router-dom";
 import "./App.css";
-import Profile from "./components/Profile";
-import Registration from "./components/Registration";
-import Loganization from "./components/Logazination";
-import HabitForm from "./components/HabitsList/HabitForm";
-import Modal from "./components/Modal";
-import HabitList from "./components/HabitsList";
+import HabitsList from "./components/HabitsList";
+import routers from "./routers";
+import ErrorBoundary from "./components/ErrorBaundary";
+import UserContext from "./context/UserContext";
+import HabitProfile from "./components/Profile";
 
 class App extends Component {
   state = {
-    isProfile: false,
     showModal: false,
+    users: [
+      {
+        email: "",
+        name: "",
+        phone: "",
+        habits: [],
+      },
+    ],
   };
 
-  toggleModal = () => {
-    this.setState({
-      showModal: !this.state.showModal,
-    });
-  };
+  modalToggle = () => this.setState((state) => ({ showModal: !state.showModal }));
 
   render() {
     const { showModal } = this.state;
     return (
       <>
-        {/* <Authentification /> */}
-        <Profile />
-        {/* <Registration /> */}
-        {/* <Loganization/> */}
-        {/* <HabitForm /> */}
-        {/* <HabitList showModal={showModal} toggleModal={this.toggleModal} /> */}
+        <UserContext>
+          <ErrorBoundary>
+            <Suspense fallback={<h1>Loading...</h1>}>
+              {routers.map((route, idx) => (
+                <Route key={idx} {...route}></Route>
+              ))}
+              <Route
+                path="/profile/habit-list"
+                exact
+                render={(props) => <HabitsList {...props} showModal={showModal} modalToggle={this.modalToggle} />}
+              />
+              <Route
+                path="/profile/habit-list/:habitId"
+                exact
+                render={(props) => <HabitProfile {...props} showModal={showModal} modalToggle={this.modalToggle} />}
+              />
+            </Suspense>
+          </ErrorBoundary>
+        </UserContext>
       </>
     );
   }

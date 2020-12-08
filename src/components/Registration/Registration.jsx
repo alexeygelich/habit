@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Registration.module.css";
+import { Link } from "react-router-dom";
 
 export default class Registration extends Component {
   static propTypes = {
@@ -29,7 +30,7 @@ export default class Registration extends Component {
     return (
       <>
         <div className={styles.header}>
-          <button type="button">Назад</button>
+          <Link to="/">Назад</Link>
         </div>
         <form className={styles.form} action="submit" onSubmit={this.handleSubmit}>
           <label htmlFor="name" value={name}></label>

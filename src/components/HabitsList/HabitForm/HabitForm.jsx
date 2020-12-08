@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 // import styles from "./HabitForm.module.css";
 
 export default class HabitForm extends Component {
-
   state = {
     title: "",
     comment: "",
@@ -33,7 +32,7 @@ export default class HabitForm extends Component {
       remind: remind,
     };
     this.props.toAddHabit(habit);
-    this.props.toggleModal();
+    this.props.modalToggle();
   };
 
   toSetProgress = (startDate) => {
@@ -48,7 +47,7 @@ export default class HabitForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div style={{ backgroundColor: this.state.color }}>
-            <button type="button" onClick={this.props.toggleModal}>
+            <button type="button" onClick={this.props.modalToggle}>
               X
             </button>
             <h2>Новая привычка</h2>

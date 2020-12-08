@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import HabitItem from "./HabitItem";
 import Modal from "../Modal";
 import HabitForm from "./HabitForm";
+import withContext from "../hoc/withContext";
 
-export default class HabitsList extends Component {
+class HabitsList extends Component {
   state = {
     habits: [{ id: "1", title: "Зарядка", startDate: "", progress: "" }],
   };
+
+  componentDidMount() {
+    const savedHabits = JSON.parse(localStorage.getItem("state")) || [];
+    this.setState({ habits: savedHabits });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state) localStorage.setItem("state", JSON.stringify(this.state.habits));
+  }
 
   toChangeProgress = (id) => {
     this.setState((prevState) => {
@@ -26,11 +35,13 @@ export default class HabitsList extends Component {
   };
 
   render() {
-    const { habits } = this.state;
+    const { habits, avatar, name } = this.props.user;
     return (
       <>
         <header>
-          <div>My accaunt</div>
+          <div>
+            <img src={avatar} alt={name} width="100" />
+          </div>
           <button type="button"></button>
         </header>
         <div>Календарь</div>
@@ -44,15 +55,17 @@ export default class HabitsList extends Component {
         ) : (
           <p>У вас пока нет привычек....</p>
         )}
-        <button type="button" onClick={this.props.toggleModal}>
+        <button type="button" onClick={this.props.modalToggle}>
           +
         </button>
         {this.props.showModal && (
-          <Modal toggleModal={this.props.toggleModal}>
-            <HabitForm toggleModal={this.props.toggleModal} toAddHabit={this.toAddHabit} />
+          <Modal modalToggle={this.props.modalToggle}>
+            <HabitForm modalToggle={this.props.modalToggle} toAddHabit={this.toAddHabit} />
           </Modal>
         )}
       </>
     );
   }
 }
+
+export default withContext(HabitsList);

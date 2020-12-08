@@ -1,20 +1,22 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import PropTypes from "prop-types";
-//import { Test } from './HabitItem.styles';
 
-const HabitItem = ({ title, progress }) => (
-  <li>
-    <h3>{title}</h3>
-    <div>{progress}%</div>
-  </li>
-);
-
-HabitItem.propTypes = {
-  // bla: PropTypes.string,
+const HabitsListItem = ({ title, progress, id }) => {
+  return (
+    <Link
+      key={id}
+      to={{
+        pathname: `/profile/habit-list/${id}`,
+        state: { title: title, progress: progress },
+      }}
+    >
+      <li>
+        <h3>{title}</h3>
+        <div>{progress}%</div>
+      </li>
+    </Link>
+  );
 };
 
-HabitItem.defaultProps = {
-  // bla: 'test',
-};
-
-export default HabitItem;
+export default HabitsListItem;
